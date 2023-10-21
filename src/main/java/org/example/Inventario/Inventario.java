@@ -2,43 +2,48 @@ package org.example.Inventario;
 
 import org.example.Producto.Producto;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Inventario extends Producto {
+public class Inventario {
 
-    //Método constructor proveniente de la super clase Producto
-    public Inventario(String idProducto, String nombre, Date fechaVencimiento, String marca, int cantidad, String categoria, String descripcion, int precio) {
-        super(idProducto, nombre, fechaVencimiento, marca, cantidad, categoria, descripcion, precio);
-    }
+    //Método constructor vacio
+    public Inventario(){}
 
     //Métodos de la clase Inventario
-    public void validarInformacion(){
-        System.out.println("El inventario valida la información ingresada");
-    }
-    public void almacenarProducto(){
-        System.out.println("El inventario almacena el producto ingresado");
-    }
-    public void eliminarProducto(){
-        System.out.println("El inventario elimina el producto");
-    }
-    public void modificarProducto(){
-        System.out.println("El inventario modifica el producto");
+    List<Producto> listaproductos = new ArrayList<>();
+    public void anadirProducto(Producto producto){
+        if (!listaproductos.contains(producto)){
+            listaproductos.add(producto);
+        }
     }
 
-    //Métodos de empleados
-    /*@Override
-    public void registrar(){
+    //Metodos getter y setter lista productos
+    public List<Producto> getListaproductos() {
+        return listaproductos;
+    }
+
+    public void setListaproductos(List<Producto> listaproductos) {
+        this.listaproductos = listaproductos;
+    }
+
+    //Metodos inventario
+    public void productoInventario(){
+       System.out.println("  Productos en Inventario \n"+getListaproductos()+"\n");
+   }
+    public void eliminarProductoInventario(Producto producto){
+        if (listaproductos.contains(producto)){
+            listaproductos.remove(producto);
+        }
 
     }
-    @Override
-    public void consultar(){
-
-    }*/
 
     //Metodo toString
+
     @Override
     public String toString() {
-        return "{ 'Id del producto':" + getIdProducto() + ", Nombre: " + getNombre() + ", Fecha de vencimiento del producto: " + getFechaVencimiento() +
-                ", Marca: " + getMarca() + ", Cantidad: " + getCantidad() + ", Categoria: " + getCategoria() +", Descripción"+getDescripcion()+", Precio"+getPrecio()+ "}";
+        return "Inventario{" +
+                "listaproductos=" + listaproductos +
+                '}';
     }
 }

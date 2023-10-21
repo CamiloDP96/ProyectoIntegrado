@@ -11,7 +11,7 @@ public class Venta extends Producto {
     private int cantidadCompra;
 
     //Constructor de la super clase Producto
-    public Venta(String idProducto, String nombre, Date fechaVencimiento, String marca, int cantidad, String categoria, String descripcion, int precio,int cantidadCompra) {
+    public Venta(String idProducto, String nombre, String fechaVencimiento, String marca, int cantidad, String categoria, String descripcion, int precio,int cantidadCompra) {
         super(idProducto, nombre, fechaVencimiento, marca, cantidad, categoria, descripcion, precio);
         this.cantidadCompra=cantidadCompra;
     }

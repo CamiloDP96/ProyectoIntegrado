@@ -1,13 +1,15 @@
 package org.example.Producto;
 
-import java.util.Date;
+import org.example.Inventario.Inventario;
+import java.util.Scanner;
+import java.util.Arrays;
 
 public class Producto {
 
     //atributos definidas
     private String idProducto;
     private String nombre;
-    private Date fechaVencimiento ;
+    private String fechaVencimiento ;
     private String marca;
     private int cantidad;
     private String categoria;
@@ -15,7 +17,7 @@ public class Producto {
     private int precio;
 
     //Medtodo constructor
-    public Producto(String idProducto,String nombre, Date fechaVencimiento, String marca, int cantidad, String categoria, String descripcion, int precio) {
+    public Producto(String idProducto,String nombre, String fechaVencimiento, String marca, int cantidad, String categoria, String descripcion, int precio) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.fechaVencimiento = fechaVencimiento;
@@ -26,14 +28,38 @@ public class Producto {
         this.precio = precio;
     }
 
+    public Producto() {}
+
     //Metodos de la clase producto
-    public void inventariar(){
-        System.out.println("El producto fue inventariado exitosamente");
+    public void agregarProductoInventario(Inventario inventario){
+        System.out.println("Por favor diligencie los siguientes datos para poder agregar el producto en el inventario");
+        Scanner datos = new Scanner(System.in);
+        System.out.println("Por favor ingrese el Id del producto");
+        String id= datos.nextLine();
+        System.out.println("Por favor ingrese el nombre del producto");
+        String nombre= datos.nextLine();
+        System.out.println("Por favor ingrese la fecha de vencimiento del producto");
+        String fecha= datos.nextLine();
+        System.out.println("Por favor ingrese la marca del producto");
+        String marca= datos.nextLine();
+        System.out.println("Por favor ingrese la cantidad de producto almacenada en el inventario");
+        int cantidad= datos.nextInt();
+        datos.nextLine();
+        System.out.println("Por favor ingrese la categoria a la que pertenece el producto");
+        String categoria= datos.nextLine();
+        System.out.println("Por favor ingrese la descripción del producto");
+        String descrip= datos.nextLine();
+        System.out.println("Por favor ingrese el precio del producto");
+        int precio= datos.nextInt();
+
+        Producto producto = new Producto(id,nombre,fecha,marca,cantidad,categoria,descrip,precio);
+        inventario.anadirProducto(producto);
     }
 
-    //Método que se extenderia de empleados
-    public void organizar(){
-        System.out.println("El producto fue organizado exitosamente");
+    public void retirarProducto(Inventario inventario){
+        System.out.println("Por favor ingrese el nombre o el Id del producto que desea eliminar");
+        Scanner retirarProduc = new Scanner(System.in);
+        String retirarDatos= retirarProduc.nextLine();
     }
 
 
@@ -52,10 +78,10 @@ public class Producto {
         this.nombre=nombre;
     }
     // Metodos getter y setter fecha de vencimiento
-    public Date getFechaVencimiento(){
+    public String getFechaVencimiento(){
         return fechaVencimiento;
     }
-    public void setFechaVencimiento(Date fechaVencimiento){
+    public void setFechaVencimiento(String fechaVencimiento){
         this.fechaVencimiento=fechaVencimiento;
     }
     // Metodos getter y setter marca
