@@ -1,6 +1,8 @@
 package org.example;
 import org.example.Inventario.Inventario;
 import org.example.Producto.Producto;
+import org.example.Producto.ProductoComprado;
+import org.example.Venta.Venta;
 
 import java.util.Scanner;
 
@@ -13,6 +15,8 @@ public class Main {
 
         Inventario inventario = new Inventario();
         Producto producto = new Producto();
+        Venta venta = new Venta();
+        ProductoComprado productoComprado = new ProductoComprado();
 
         int option = ejecucionMenu();
         while (option != 8) {
@@ -20,11 +24,12 @@ public class Main {
             switch (option) {
                 case 1 -> producto.agregarProductoInventario(inventario);
                 case 2 -> inventario.productoInventario();
-                case 3 -> inventario.eliminarProductoInventario(producto);
-                /*case 4 -> enrollStudentToCourse(academicService);
-                case 5 -> findAProfessor(academicService);
-                case 6 -> findAStudent(academicService);
-                case 7 -> findACourse(academicService);*/
+                case 3 -> producto.retirarProducto(inventario);
+                case 4 -> producto.ConsultarProducto(inventario);
+                case 5 -> venta.ventaProduct(producto);
+                case 6 -> productoComprado.imprimirFactura(venta);
+                /*case 7 -> findACourse(academicService);
+                case 8->awdfcn*/
             }
             option = ejecucionMenu();
         }
@@ -33,13 +38,14 @@ public class Main {
     private static int ejecucionMenu() {
         System.out.println("*----------------------------------------------*");
         System.out.println("| Por favor seleccione una opción:          |");
-        System.out.println("| 1. Registrar un Producto                  |");
-        System.out.println("| 2. Verificar inventario                   |");
-        System.out.println("| 3. Eliminar un producto                   |");
-        System.out.println("| 4. Imprimir factura                       |");
-        System.out.println("| 5. Consultar un producto en inventario    |");
-        System.out.println("| 6. Generar Venta                          |");
-        System.out.println("| 7. Salir                                  |");
+        System.out.println("| 1. Registrar un Producto.                 |");
+        System.out.println("| 2. Lista productos en inventario.         |");
+        System.out.println("| 3. Eliminar un producto.                  |");
+        System.out.println("| 4. Consultar un producto en inventario.   |");
+        System.out.println("| 5. Guardar Venta.                         |");
+        System.out.println("| 6. Imprimir factura.                      |");
+        System.out.println("| 7. Modificar Producto en inventario.      |");
+        System.out.println("| 8. Salir.                                 |");
         System.out.println("*----------------------------------------------*");
         Scanner scanner = new Scanner(System.in);
         int option = 8;

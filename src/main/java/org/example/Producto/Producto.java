@@ -1,6 +1,9 @@
 package org.example.Producto;
 
 import org.example.Inventario.Inventario;
+import org.example.Venta.Venta;
+
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.Arrays;
 
@@ -57,11 +60,27 @@ public class Producto {
     }
 
     public void retirarProducto(Inventario inventario){
-        System.out.println("Por favor ingrese el nombre o el Id del producto que desea eliminar");
+
         Scanner retirarProduc = new Scanner(System.in);
-        String retirarDatos= retirarProduc.nextLine();
+        System.out.println("Por favor ingrese el Id del producto que desea eliminar");
+        String idProduc = retirarProduc.nextLine();
+        inventario.getListaproductos().removeIf(x->idProduc.equals(x.getIdProducto()));
     }
 
+    public void ConsultarProducto(Inventario inventario){
+        Scanner consulta = new Scanner(System.in);
+        System.out.println("Por favor ingrese el nombre del producto que desea consultar en inventario");
+        String consultaNom = consulta.nextLine();
+        Optional<Producto> nombreOpcional= inventario.buscarProducto(consultaNom);
+        if (nombreOpcional.isPresent()){
+            System.out.println(nombreOpcional.get());
+        }else {
+            System.out.println("El producto con el nombre "+consultaNom+" no se encuentra registrado en el inventario");
+        }
+    }
+    public void modificarProducto(Inventario inventario){
+        
+    }
 
     // Metodos getter y setter Id Producto
     public String getIdProducto(){
