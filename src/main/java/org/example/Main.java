@@ -16,7 +16,7 @@ public class Main {
         Inventario inventario = new Inventario();
         Producto producto = new Producto();
         Venta venta = new Venta();
-        ProductoComprado productoComprado = new ProductoComprado();
+        //ProductoComprado productoComprado = new ProductoComprado();
 
         int option = ejecucionMenu();
         while (option != 8) {
@@ -27,7 +27,7 @@ public class Main {
                 case 3 -> producto.retirarProducto(inventario);
                 case 4 -> producto.ConsultarProducto(inventario);
                 case 5 -> venta.ventaProduct(producto);
-                case 6 -> productoComprado.imprimirFactura(venta);
+                case 6 -> venta.imprimirFactura();
                 /*case 7 -> findACourse(academicService);
                 case 8->awdfcn*/
             }

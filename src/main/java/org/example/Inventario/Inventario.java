@@ -12,6 +12,8 @@ public class Inventario {
     //Método constructor vacio
     public Inventario(){}
 
+    List<Producto> listaproductos = new ArrayList<>();
+
     //Metodos getter y setter lista productos
     public List<Producto> getListaproductos() {
         return listaproductos;
@@ -22,7 +24,7 @@ public class Inventario {
     }
 
     //Métodos de la clase Inventario
-    List<Producto> listaproductos = new ArrayList<>();
+
     public void anadirProducto(Producto producto){
         if (!listaproductos.contains(producto)){
             listaproductos.add(producto);
@@ -48,8 +50,7 @@ public class Inventario {
 
     @Override
     public String toString() {
-        return "Inventario{" +
-                "listaproductos=" + listaproductos +
-                '}';
+        return "Inventario" +
+                "listaproductos=" + listaproductos +"\n";
     }
 }
